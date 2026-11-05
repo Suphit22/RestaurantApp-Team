@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -11,30 +12,34 @@ namespace RestaurantApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Suphitsara");
-            Console.WriteLine("Phichanin");
-
             List<Restaurant> restaurants = new List<Restaurant>
             {
                 new Restaurant(1, "Quanjude Roast Duck", "Beijing Cuisine", 4.5),
                 new Restaurant(2, "Donglaishun Hot Pot", "Hot Pot", 4.6),
-                new Restaurant(3, "Din Tai Fung", "Taiwanese Cuisine", 4.7)
+                new Restaurant(3, "Din Tai Fung", "Taiwanese Cuisine", 4.7),
+                new Restaurant(4, "Huguosi Snacks", "Snacks",4.2)
             };
+            const double MinRating = 4.5;
 
+            List<Restaurant> goodRestaurants = restaurants
+                .Where(r => r.Rate >= MinRating)
+                .ToList();
+
+            foreach (var r in goodRestaurants)
+            {
+                Console.WriteLine($"{r.ID}. {r.Name} ({r.Type}) - {r.Rate}");
+            }
         }
 
     }
     public class Restaurant
     {
-        public string ID { get; set; }
-
+        public int ID { get; set; }
         public string Name { get; set; }
-
         public string Type { get; set; }
-
         public double Rate { get; set; }
 
-        public Restaurant(int ID, string Name, string Type, double Rate)
+        public Restaurant(int id, string name, string type, double rate)
         {
             this.ID = id;
             this.Name = name;

@@ -37,7 +37,24 @@ namespace RestaurantApp
             }
         }
 
-        static void AddRestaurant(List<Restaurant> restaurants) { }
+        static void AddRestaurant(List<Restaurant> restaurants)
+        {
+            Console.WriteLine();
+            Console.Write("ชื่อร้าน: ");
+            string name = Console.ReadLine();
+
+            Console.Write("ประเภท: ");
+            string type = Console.ReadLine();
+
+            Console.Write("คะแนน: ");
+            double rate = double.Parse(Console.ReadLine());
+
+            int id = restaurants.Count + 1;
+            restaurants.Add(new Restaurant(id, name, type, rate));
+
+            Console.WriteLine("เพิ่มร้านเรียบร้อย");
+            ShowRestaurants(restaurants);
+        }
         static void ShowGoodRating(List<Restaurant> restaurants) { }
         static void ShowSummary(List<Restaurant> restaurants) { }
     }

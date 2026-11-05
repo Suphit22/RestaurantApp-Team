@@ -40,6 +40,8 @@ namespace RestaurantApp
         static void AddRestaurant(List<Restaurant> restaurants)
         {
             Console.WriteLine();
+            Console.WriteLine("=== เพิ่มร้านอาหารใหม่ ===");
+
             Console.Write("ชื่อร้าน: ");
             string name = Console.ReadLine();
 
@@ -47,7 +49,11 @@ namespace RestaurantApp
             string type = Console.ReadLine();
 
             Console.Write("คะแนน: ");
-            double rate = double.Parse(Console.ReadLine());
+            double rate;
+            while (!double.TryParse(Console.ReadLine(), out rate))
+            {
+                Console.Write("กรุณาพิมพ์ตัวเลข คะแนน: ");
+            }
 
             int id = restaurants.Count + 1;
             restaurants.Add(new Restaurant(id, name, type, rate));

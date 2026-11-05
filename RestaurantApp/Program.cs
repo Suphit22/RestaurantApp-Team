@@ -11,35 +11,50 @@ namespace RestaurantApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Suphitsara");
-            Console.WriteLine("Phichanin");
+            //Console.WriteLine("Suphitsara");
+            //Console.WriteLine("Phichanin");
 
             List<Restaurant> restaurants = new List<Restaurant>
-            {
-                new Restaurant(1, "Quanjude Roast Duck", "Beijing Cuisine", 4.5),
-                new Restaurant(2, "Donglaishun Hot Pot", "Hot Pot", 4.6),
-                new Restaurant(3, "Din Tai Fung", "Taiwanese Cuisine", 4.7)
-            };
+        {
+            new Restaurant(1, "Quanjude Roast Duck", "Beijing Cuisine", 4.5),
+            new Restaurant(2, "Donglaishun Hot Pot", "Hot Pot", 4.6),
+            new Restaurant(3, "Din Tai Fung", "Taiwanese Cuisine", 4.7)
+        };
 
+            ShowRestaurants(restaurants);
+            AddRestaurant(restaurants);     // A
+            ShowGoodRating(restaurants);    // B
+            ShowSummary(restaurants);       // C
+
+            Console.ReadKey();
         }
 
+        static void ShowRestaurants(List<Restaurant> restaurants)
+        {
+            foreach (Restaurant r in restaurants)
+            {
+                Console.WriteLine($"{r.ID} | {r.Name} | {r.Type} | {r.Rate}");
+            }
+        }
+
+        static void AddRestaurant(List<Restaurant> restaurants) { }
+        static void ShowGoodRating(List<Restaurant> restaurants) { }
+        static void ShowSummary(List<Restaurant> restaurants) { }
     }
     public class Restaurant
     {
-        public string ID { get; set; }
-
+        public int ID { get; set; }          // เดิมเป็น string ต้องเป็น int
         public string Name { get; set; }
-
         public string Type { get; set; }
-
         public double Rate { get; set; }
 
-        public Restaurant(int ID, string Name, string Type, double Rate)
+        public Restaurant(int id, string name, string type, double rate)
         {
             this.ID = id;
             this.Name = name;
             this.Type = type;
             this.Rate = rate;
         }
+
     }
 }

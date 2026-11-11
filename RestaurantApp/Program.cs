@@ -11,6 +11,7 @@ namespace RestaurantApp
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("=== โปรแกรมจัดการร้านอาหาร ===");
             //Console.WriteLine("Suphitsara");
             //Console.WriteLine("Phichanin");
 
